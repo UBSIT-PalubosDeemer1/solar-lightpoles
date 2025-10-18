@@ -1,0 +1,1195 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SolarLightpoles | Sustainable Lighting Solutions</title>
+    <style>
+        /* Reset and base styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: #97a5b8;
+            color: #333;
+            line-height: 1.6;
+        }
+        
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+        
+        /* Header styles */
+        header {
+            background-color: #25bd9c;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 5%;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+        
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: #2a7d2e;
+        }
+        
+        .logo span {
+            color: #ff6b35;
+        }
+        
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+        
+        nav ul li {
+            margin-left: 2rem;
+            position: relative;
+        }
+        
+        nav ul li a {
+            font-weight: 500;
+            transition: color 0.3s;
+            padding: 0.5rem 0;
+        }
+        
+        nav ul li a:hover {
+            color: #2a7d2e;
+        }
+        
+        nav ul li a.active {
+            color: #2a7d2e;
+            font-weight: 600;
+            border-bottom: 2px solid #2a7d2e;
+        }
+        
+        .login-btn {
+            background-color: #2a7d2e;
+            color: white;
+            padding: 0.5rem 1.5rem;
+            border-radius: 4px;
+            font-weight: 500;
+            transition: background-color 0.3s;
+        }
+        
+        .login-btn:hover {
+            background-color: #538857;
+        }
+        
+        .hamburger {
+            display: none;
+            cursor: pointer;
+            flex-direction: column;
+            justify-content: space-between;
+            width: 25px;
+            height: 20px;
+        }
+        
+        .hamburger span {
+            display: block;
+            height: 3px;
+            width: 100%;
+            background-color: #333;
+            border-radius: 2px;
+            transition: all 0.3s;
+        }
+        
+        /* Page content styles */
+        .page {
+            display: none;
+            animation: fadeIn 0.5s ease-in-out;
+        }
+        
+        .page.active {
+            display: block;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        
+        /* Hero section */
+        .hero {
+            background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), 
+                        url('back1.jpg'); /* Change this to your local image filename */
+            background-size: cover;
+            background-position: center;
+            color: white;
+            padding: 6rem 5%;
+            text-align: center;
+            min-height: 70vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+        
+        .hero h1 {
+            font-size: 2.5rem;
+            margin-bottom: 1.5rem;
+        }
+        
+        .hero p {
+            font-size: 1.2rem;
+            max-width: 700px;
+            margin: 0 auto 2rem;
+        }
+        
+        .cta-btn {
+            display: inline-block;
+            background-color: #ff6b35;
+            color: white;
+            padding: 0.8rem 2rem;
+            border-radius: 4px;
+            font-weight: 600;
+            font-size: 1.1rem;
+            transition: background-color 0.3s;
+        }
+        
+        .cta-btn:hover {
+            background-color: #e55a2b;
+        }
+        
+        /* Content sections */
+        .section {
+            padding: 4rem 5%;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 3rem;
+            color: #2a7d2e;
+        }
+        
+        .sustainability-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+        
+        .sustainability-card {
+            background-color: white;
+            border-radius: 8px;
+            padding: 2rem;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+            text-align: center;
+            transition: transform 0.3s;
+        }
+        
+        .sustainability-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .sustainability-card h3 {
+            color: #2a7d2e;
+            margin-bottom: 1rem;
+        }
+        
+        .icon {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            color: #ff6b35;
+        }
+        
+        /* Shop page styles */
+        .meal-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 2rem;
+        }
+        
+        .meal-card {
+            background-color: white;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+            transition: transform 0.3s;
+        }
+        
+        .meal-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .meal-image {
+            height: 200px;
+            background-color: #f0f0f0;
+            background-size: cover;
+            background-position: center;
+        }
+        
+        .meal-info {
+            padding: 1.5rem;
+        }
+        
+        .meal-info h3 {
+            margin-bottom: 0.5rem;
+            color: #2a7d2e;
+        }
+        
+        .meal-price {
+            font-weight: 600;
+            color: #ff6b35;
+            margin: 0.5rem 0;
+        }
+        
+        .add-to-cart {
+            display: block;
+            width: 100%;
+            background-color: #2a7d2e;
+            color: white;
+            border: none;
+            padding: 0.7rem;
+            border-radius: 4px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        
+        .add-to-cart:hover {
+            background-color: #1e5e22;
+        }
+        
+        /* Sustainability page styles */
+        .sustainability-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            align-items: center;
+        }
+        
+        .sustainability-image {
+            height: 400px;
+            background-color: #f0f0f0;
+            border-radius: 8px;
+            background-size: cover;
+            background-position: center;
+        }
+        
+        .sustainability-text h3 {
+            color: #2a7d2e;
+            margin-bottom: 1rem;
+        }
+        
+        .sustainability-text p {
+            margin-bottom: 1.5rem;
+        }
+        
+        /* Login page styles */
+        .login-container {
+            max-width: 400px;
+            margin: 2rem auto;
+            background-color: white;
+            padding: 2rem;
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+        }
+        
+        .login-container h2 {
+            text-align: center;
+            margin-bottom: 1.5rem;
+            color: #2a7d2e;
+        }
+        
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 500;
+        }
+        
+        .form-group input {
+            width: 100%;
+            padding: 0.8rem;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-size: 1rem;
+        }
+        
+        .login-submit {
+            width: 100%;
+            background-color: #2a7d2e;
+            color: white;
+            border: none;
+            padding: 0.8rem;
+            border-radius: 4px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        
+        .login-submit:hover {
+            background-color: #1e5e22;
+        }
+        
+        .signup-link {
+            text-align: center;
+            margin-top: 1.5rem;
+        }
+        
+        .signup-link a {
+            color: #2a7d2e;
+            font-weight: 500;
+        }
+        
+        /* Customer Information Form Styles */
+        .customer-form-container {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.7);
+            z-index: 1000;
+            justify-content: center;
+            align-items: center;
+        }
+        
+        .customer-form {
+            background-color: white;
+            padding: 2rem;
+            border-radius: 8px;
+            width: 90%;
+            max-width: 500px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+        }
+        
+        .customer-form h2 {
+            margin-bottom: 1.5rem;
+            color: #2a7d2e;
+            text-align: center;
+        }
+        
+        .form-row {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 1rem;
+        }
+        
+        .form-row .form-group {
+            flex: 1;
+            margin-bottom: 0;
+        }
+        
+        .form-actions {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 1.5rem;
+        }
+        
+        .cancel-btn {
+            background-color: #ccc;
+            color: #333;
+            border: none;
+            padding: 0.8rem 1.5rem;
+            border-radius: 4px;
+            cursor: pointer;
+            font-weight: 500;
+        }
+        
+        .submit-btn {
+            background-color: #2a7d2e;
+            color: white;
+            border: none;
+            padding: 0.8rem 1.5rem;
+            border-radius: 4px;
+            cursor: pointer;
+            font-weight: 500;
+        }
+        
+        /* Popup notification */
+        .popup {
+            display: none;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background-color: white;
+            padding: 2rem;
+            border-radius: 8px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+            z-index: 1001;
+            text-align: center;
+        }
+        
+        .popup h3 {
+            margin-bottom: 1rem;
+            color: #2a7d2e;
+        }
+        
+        .popup-btn {
+            background-color: #2a7d2e;
+            color: white;
+            border: none;
+            padding: 0.7rem 1.5rem;
+            border-radius: 4px;
+            cursor: pointer;
+            font-weight: 500;
+            margin-top: 1rem;
+        }
+        
+        /* Footer */
+        footer {
+            background-color: #25bd9c;
+            color: white;
+            padding: 3rem 5%;
+            text-align: center;
+        }
+        
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin: 2rem 0;
+        }
+        
+        .footer-links a {
+            margin: 0 1rem;
+            transition: color 0.3s;
+        }
+        
+        .footer-links a:hover {
+            color: #ffd166;
+        }
+        
+        .copyright {
+            margin-top: 2rem;
+            font-size: 0.9rem;
+            opacity: 0.8;
+        }
+        
+        /* Responsive styles */
+        @media (max-width: 768px) {
+            .hamburger {
+                display: flex;
+            }
+            
+            nav {
+                position: fixed;
+                top: 70px;
+                left: 0;
+                width: 100%;
+                background-color: white;
+                box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+                transform: translateY(-150%);
+                transition: transform 0.3s;
+                z-index: 99;
+            }
+            
+            nav.active {
+                transform: translateY(0);
+            }
+            
+            nav ul {
+                flex-direction: column;
+                padding: 1rem 0;
+            }
+            
+            nav ul li {
+                margin: 0;
+                text-align: center;
+                padding: 1rem 0;
+                border-bottom: 1px solid #f0f0f0;
+            }
+            
+            .hero h1 {
+                font-size: 2rem;
+            }
+            
+            .hero p {
+                font-size: 1rem;
+            }
+            
+            .sustainability-content {
+                grid-template-columns: 1fr;
+            }
+            
+            .sustainability-image {
+                height: 250px;
+            }
+            
+            .form-row {
+                flex-direction: column;
+                gap: 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="header-container">
+            <a href="#" class="logo">Solar<span>Lightpoles</span></a>
+            
+            <div class="hamburger" id="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+            
+            <nav id="nav">
+                <ul>
+                    <li><a href="#" class="nav-link active" data-page="home">Home</a></li>
+                    <li><a href="#" class="nav-link" data-page="shop">Shop</a></li>
+                    <li><a href="#" class="nav-link" data-page="sustainability">Features</a></li>
+                    <li><a href="#" class="login-btn nav-link" data-page="login">Login</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Home Page -->
+    <section class="page active" id="home">
+        <!-- Hero Section -->
+        <div class="hero">
+            <h1>Lighting up a healthier tommorow.</h1>
+            <p>Our innovation, the solar streetlight with an air purifier system, brings clean energy and cleaner air to every community. By harnessing solar power, it provides sustainable lighting while reducing harmful pollutants in the environment. Together, we are lighting up a healthier tomorrow—one bright and breathable street at a time.</p>
+        </div>
+
+ <!-- Sustainability Section -->
+<div class="section">
+    <h2 class="section-title">Our Sustainable Impact</h2>
+    <div class="sustainability-grid">
+        <div class="sustainability-card">
+            <div class="icon">☀️</div>
+            <h3>Solar-Powered Operation</h3>
+            <p>Our light poles harness 100% renewable solar energy, eliminating electricity costs and reducing carbon footprint. Each pole generates its own power through high-efficiency photovoltaic panels, operating completely off-grid.</p>
+        </div>
+        <div class="sustainability-card">
+            <div class="icon">🌬️</div>
+            <h3>Integrated Air Purification</h3>
+            <p>Advanced HEPA and carbon filtration systems actively clean surrounding air, removing pollutants, allergens, and particulate matter. Each pole purifies up to 10,000 cubic meters of air daily, creating healthier urban environments.</p>
+        </div>
+        <div class="sustainability-card">
+            <div class="icon">🏙️</div>
+            <h3>Smart City Integration</h3>
+            <p>Our poles feature IoT sensors for traffic monitoring, weather data collection, and emergency response systems. They serve as multifunctional urban infrastructure while maintaining minimal environmental impact.</p>
+        </div>
+    </div>
+</div>
+    </section>
+
+    <!-- Shop Page -->
+    <section class="page" id="shop">
+        <div class="section">
+            <h2 class="section-title">Our Product Plans</h2>
+            <p style="text-align: center; margin-bottom: 2rem;">Choose from our variety of plans designed preferences.</p>
+            
+<div class="meal-grid">
+    <!-- Product 1: SolarAir Pro Max -->
+    <div class="meal-card">
+        <div class="meal-image" style="background-image: url('pole1.png')"></div>
+        <div class="meal-info">
+            <h3>SolarAir Pro Max</h3>
+            <p>Our flagship smart pole featuring advanced edge computing and comprehensive air purification. Ideal for urban centers, business districts, and high-traffic areas requiring maximum air quality improvement and real-time environmental monitoring.</p>
+            <div class="meal-features">
+                <small>• 500W Solar PV with MPPT • Edge Computer + Sensors • Triple Filtration (Pre-HEPA-Carbon) • 5G Gateway • Modular Battery</small>
+            </div>
+            <div class="meal-price">₱100,000</div>
+            <button class="add-to-cart" data-product="SolarAir Pro Max" data-price="100000">Add to Cart</button>
+        </div>
+    </div>
+    
+    <!-- Product 2: SolarAir Standard -->
+    <div class="meal-card">
+        <div class="meal-image" style="background-image: url('ploe2.png')"></div>
+        <div class="meal-info">
+            <h3>SolarAir Standard</h3>
+            <p>Perfect for residential communities, schools, and commercial areas. Offers reliable air purification with smart monitoring capabilities at an optimal price point. Features comprehensive three-stage filtration and efficient power management.</p>
+            <div class="meal-features">
+                <small>• 300W Compact Solar PV • Edge Controller • Triple Filtration System • Modular Battery Pack • Weather-Resistant</small>
+            </div>
+            <div class="meal-price">₱50,000</div>
+            <button class="add-to-cart" data-product="SolarAir Standard" data-price="50000">Add to Cart</button>
+        </div>
+    </div>
+    
+    <!-- Product 3: SolarAir Mini -->
+    <div class="meal-card">
+        <div class="meal-image" style="background-image: url('pole3.png')"></div>
+        <div class="meal-info">
+            <h3>SolarAir Mini</h3>
+            <p>Cost-effective solution for parks, pathways, and smaller communities. Provides essential air purification and reliable solar lighting with simplified maintenance. Excellent for municipalities starting clean air initiatives.</p>
+            <div class="meal-features">
+                <small>• 150W Solar Module • Dual Filtration (Pre-HEPA) • Compact Battery • Basic LED Lighting • Easy Installation</small>
+            </div>
+            <div class="meal-price">₱14,000</div>
+            <button class="add-to-cart" data-product="SolarAir Mini" data-price="14000">Add to Cart</button>
+        </div>
+    </div>
+</div>
+        </div>
+    </section>
+
+    <!-- Sustainability Page -->
+<section class="page" id="sustainability">
+    <div class="section">
+        <h2 class="section-title">OUR PRODUCT FEATURES</h2>
+        
+        <!-- Pole 1 - Advanced Model -->
+        <div class="sustainability-content">
+            <div class="sustainability-image" style="background-image: url('pole1.png')"></div>
+            <div class="sustainability-text">
+                <h3>SolarAir Pro Max</h3>
+                <p>Our advanced integrated system featuring comprehensive air purification and smart monitoring capabilities. This model includes edge computing for real-time environmental data processing and optimized power management.</p>
+                <ul style="margin-left: 1.5rem; margin-top: 1rem;">
+                    <li style="margin-bottom: 0.5rem;">High-efficiency LED luminaire with dimmable driver</li>
+                    <li style="margin-bottom: 0.5rem;">Modular battery pack with MPPT solar charge controller</li>
+                    <li style="margin-bottom: 0.5rem;">Multi-stage filtration: Pre-filter, HEPA, and adsorbent carbon</li>
+                    <li style="margin-bottom: 0.5rem;">Edge computer with environmental sensors and gateway</li>
+                    <li style="margin-bottom: 0.5rem;">DC-DC power conversion for optimal efficiency</li>
+                    <li style="margin-bottom: 0.5rem;">Integrated control/ECU board for system management</li>
+                </ul>
+            </div>
+        </div>
+        
+        <!-- Pole 2 - Standard Model -->
+        <div class="sustainability-content" style="margin-top: 3rem;">
+            <div class="sustainability-text">
+                <h3>SolarAir Standard</h3>
+                <p>Compact solar-powered solution with essential air purification features. Designed for reliable performance in urban and residential environments with efficient power flow management.</p>
+                <ul style="margin-left: 1.5rem; margin-top: 1rem;">
+                    <li style="margin-bottom: 0.5rem;">Compact solar PV module with optimized energy harvesting</li>
+                    <li style="margin-bottom: 0.5rem;">LED luminaire with efficient light distribution</li>
+                    <li style="margin-bottom: 0.5rem;">Modular battery pack for extended operation</li>
+                    <li style="margin-bottom: 0.5rem;">Three-stage air filtration system</li>
+                    <li style="margin-bottom: 0.5rem;">Edge controller with basic sensor capabilities</li>
+                    <li style="margin-bottom: 0.5rem;">Dual air flow paths for optimal purification</li>
+                </ul>
+            </div>
+            <div class="sustainability-image" style="background-image: url('ploe2.png')"></div>
+        </div>
+        
+        <!-- Pole 3 - Compact Model -->
+        <div class="sustainability-content" style="margin-top: 3rem;">
+            <div class="sustainability-image" style="background-image: url('pole3.png')"></div>
+            <div class="sustainability-text">
+                <h3>SolarAir Mini</h3>
+                <p>Streamlined design focusing on core air purification functionality. Ideal for parks, pathways, and areas requiring essential air quality improvement with minimal footprint.</p>
+                <ul style="margin-left: 1.5rem; margin-top: 1rem;">
+                    <li style="margin-bottom: 0.5rem;">Basic solar PV module for essential power needs</li>
+                    <li style="margin-bottom: 0.5rem;">Efficient LED lighting with focused illumination</li>
+                    <li style="margin-bottom: 0.5rem;">Compact modular battery system</li>
+                    <li style="margin-bottom: 0.5rem;">Dual-stage filtration (Pre-filter + HEPA)</li>
+                    <li style="margin-bottom: 0.5rem;">Adsorbent carbon for odor elimination</li>
+                    <li style="margin-bottom: 0.5rem;">Simplified air intake and exhaust system</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Technical Specifications Table -->
+        <div style="margin-top: 4rem; background: white; padding: 2rem; border-radius: 8px; box-shadow: 0 4px 12px rgba(0,0,0,0.08);">
+            <h3 style="text-align: center; color: #2a7d2e; margin-bottom: 2rem;">Technical Comparison</h3>
+            <table style="width: 100%; border-collapse: collapse;">
+                <thead>
+                    <tr style="background-color: #f5f5f5;">
+                        <th style="padding: 1rem; text-align: left; border: 1px solid #ddd;">Feature</th>
+                        <th style="padding: 1rem; text-align: center; border: 1px solid #ddd;">SolarAir Pro Max</th>
+                        <th style="padding: 1rem; text-align: center; border: 1px solid #ddd;">SolarAir Standard</th>
+                        <th style="padding: 1rem; text-align: center; border: 1px solid #ddd;">SolarAir Mini</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td style="padding: 1rem; border: 1px solid #ddd; font-weight: 500;">Solar Capacity</td>
+                        <td style="padding: 1rem; border: 1px solid #ddd; text-align: center;">500W</td>
+                        <td style="padding: 1rem; border: 1px solid #ddd; text-align: center;">300W</td>
+                        <td style="padding: 1rem; border: 1px solid #ddd; text-align: center;">150W</td>
+                    </tr>
+                    <tr style="background-color: #f9f9f9;">
+                        <td style="padding: 1rem; border: 1px solid #ddd; font-weight: 500;">Filtration Stages</td>
+                        <td style="padding: 1rem; border: 1px solid #ddd; text-align: center;">3 Stages</td>
+                        <td style="padding: 1rem; border: 1px solid #ddd; text-align: center;">3 Stages</td>
+                        <td style="padding: 1rem; border: 1px solid #ddd; text-align: center;">2 Stages</td>
+                    </tr>
+                    <tr>
+                        <td style="padding: 1rem; border: 1px solid #ddd; font-weight: 500;">Battery System</td>
+                        <td style="padding: 1rem; border: 1px solid #ddd; text-align: center;">Modular + MPPT</td>
+                        <td style="padding: 1rem; border: 1px solid #ddd; text-align: center;">Modular</td>
+                        <td style="padding: 1rem; border: 1px solid #ddd; text-align: center;">Compact</td>
+                    </tr>
+                    <tr style="background-color: #f9f9f9;">
+                        <td style="padding: 1rem; border: 1px solid #ddd; font-weight: 500;">Smart Features</td>
+                        <td style="padding: 1rem; border: 1px solid #ddd; text-align: center;">Edge Computing + Gateway</td>
+                        <td style="padding: 1rem; border: 1px solid #ddd; text-align: center;">Basic Sensors</td>
+                        <td style="padding: 1rem; border: 1px solid #ddd; text-align: center;">Essential Only</td>
+                    </tr>
+                    <tr>
+                        <td style="padding: 1rem; border: 1px solid #ddd; font-weight: 500;">Air Flow Rate</td>
+                        <td style="padding: 1rem; border: 1px solid #ddd; text-align: center;">15,000 m³/hour</td>
+                        <td style="padding: 1rem; border: 1px solid #ddd; text-align: center;">10,000 m³/hour</td>
+                        <td style="padding: 1rem; border: 1px solid #ddd; text-align: center;">5,000 m³/hour</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</section>
+
+    <!-- Login Page -->
+    <section class="page" id="login">
+        <div class="section">
+            <h2 class="section-title">Login to Your Account</h2>
+            
+            <div class="login-container">
+                <h2>Welcome Back</h2>
+                <form id="login-form">
+                    <div class="form-group">
+                        <label for="email">Email Address</label>
+                        <input type="email" id="email" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="password">Password</label>
+                        <input type="password" id="password" required>
+                    </div>
+                    <button type="submit" class="login-submit">Login</button>
+                </form>
+                <div class="signup-link">
+                    <p>Don't have an account? <a href="#">Sign up here</a></p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer Pages -->
+    <section class="page" id="about-us">
+        <div class="section">
+            <h2 class="section-title">About Us</h2>
+            <div class="sustainability-content">
+                <div class="sustainability-text">
+                    <h3>Our Story</h3>
+                    <p>SolarLightpoles was founded in 2020 with a vision to revolutionize urban lighting while addressing environmental challenges. Our team of engineers and sustainability experts came together to develop innovative solar-powered streetlights with integrated air purification systems.</p>
+                    <p>We believe that clean energy and clean air should be accessible to all communities, regardless of their location or economic status. Our mission is to create sustainable lighting solutions that not only illuminate streets but also improve air quality and public health.</p>
+                    <h3>Our Values</h3>
+                    <ul style="margin-left: 1.5rem; margin-top: 1rem;">
+                        <li style="margin-bottom: 0.5rem;">Sustainability: We prioritize eco-friendly solutions in all our operations</li>
+                        <li style="margin-bottom: 0.5rem;">Innovation: We continuously research and develop new technologies</li>
+                        <li style="margin-bottom: 0.5rem;">Community: We work closely with local communities to understand their needs</li>
+                        <li style="margin-bottom: 0.5rem;">Quality: We maintain the highest standards in our products and services</li>
+                    </ul>
+                </div>
+                <div class="sustainability-image" style="background-image: url('123.jpg')"; display: flex; justify-content: center; align-items: center;">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="page" id="contact">
+        <div class="section">
+            <h2 class="section-title">Contact Us</h2>
+            <div class="sustainability-content">
+                <div class="sustainability-text">
+                    <h3>Get In Touch</h3>
+                    <p>We'd love to hear from you! Whether you have questions about our products, need technical support, or want to discuss partnership opportunities, our team is here to help.</p>
+                    <div style="margin-top: 2rem;">
+                        <h4>Contact Information</h4>
+                        <p><strong>Address:</strong> 123 University Of Baguio,Baguio City</p>
+                        <p><strong>Phone:</strong> +1 (555) 123-4567</p>
+                        <p><strong>Email:</strong> info@solarlightpoles.com</p>
+                        <p><strong>Business Hours:</strong> Monday-Friday, 9:00 AM - 6:00 PM</p>
+                    </div>
+                </div>
+                <div class="sustainability-text">
+                    <h3>Send Us a Message</h3>
+                    <form>
+                        <div class="form-group">
+                            <label for="name">Your Name</label>
+                            <input type="text" id="name" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="contact-email">Your Email</label>
+                            <input type="email" id="contact-email" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="subject">Subject</label>
+                            <input type="text" id="subject" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="message">Message</label>
+                            <textarea id="message" rows="5" style="width: 100%; padding: 0.8rem; border: 1px solid #ddd; border-radius: 4px; font-size: 1rem;" required></textarea>
+                        </div>
+                        <button type="submit" class="login-submit" id="contact-submit-btn">Send Message</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="page" id="faq">
+        <div class="section">
+            <h2 class="section-title">Frequently Asked Questions</h2>
+            <div class="sustainability-content">
+                <div class="sustainability-text">
+                    <h3>Product Questions</h3>
+                    <div style="margin-bottom: 2rem;">
+                        <h4>How do the solar panels work during cloudy days?</h4>
+                        <p>Our solar panels are designed with high-efficiency cells that can capture diffused sunlight on cloudy days. Additionally, each unit includes a battery backup system that stores excess energy during sunny periods to ensure continuous operation.</p>
+                    </div>
+                    <div style="margin-bottom: 2rem;">
+                        <h4>How often do the air filters need replacement?</h4>
+                        <p>The air purification filters typically need replacement every 6-12 months, depending on local air quality conditions. Our systems include indicator lights that notify maintenance teams when filter replacement is needed.</p>
+                    </div>
+                    <div style="margin-bottom: 2rem;">
+                        <h4>What maintenance is required for the light poles?</h4>
+                        <p>Our solar light poles require minimal maintenance. We recommend visual inspections every 3 months and a comprehensive maintenance check annually. Our team offers maintenance packages to ensure optimal performance.</p>
+                    </div>
+                </div>
+                <div class="sustainability-text">
+                    <h3>Order & Shipping</h3>
+                    <div style="margin-bottom: 2rem;">
+                        <h4>What is the delivery time for orders?</h4>
+                        <p>Standard delivery takes 2-4 weeks after order confirmation. For urgent projects, we offer expedited shipping options that can reduce delivery time to 1-2 weeks (additional charges apply).</p>
+                    </div>
+                    <div style="margin-bottom: 2rem;">
+                        <h4>Do you offer installation services?</h4>
+                        <p>Yes, we provide professional installation services for all our products. Our certified technicians ensure proper installation and system optimization. Installation services can be added during the ordering process.</p>
+                    </div>
+                    <div style="margin-bottom: 2rem;">
+                        <h4>What is your warranty policy?</h4>
+                        <p>We offer a 5-year warranty on all our solar light poles, covering manufacturing defects and performance issues. The solar panels come with a 25-year performance warranty, and batteries are covered for 3 years.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="page" id="privacy-policy">
+        <div class="section">
+            <h2 class="section-title">Privacy Policy</h2>
+            <div class="sustainability-text">
+                <p><strong>Last Updated: January 1, 2023</strong></p>
+                
+                <h3>Information We Collect</h3>
+                <p>We collect information you provide directly to us, such as when you create an account, place an order, or contact us for support. This may include:</p>
+                <ul style="margin-left: 1.5rem; margin-top: 1rem; margin-bottom: 1.5rem;">
+                    <li style="margin-bottom: 0.5rem;">Personal identification information (name, email address, phone number, etc.)</li>
+                    <li style="margin-bottom: 0.5rem;">Billing and shipping information</li>
+                    <li style="margin-bottom: 0.5rem;">Communication preferences</li>
+                    <li style="margin-bottom: 0.5rem;">Product inquiries and feedback</li>
+                </ul>
+                
+                <h3>How We Use Your Information</h3>
+                <p>We use the information we collect to:</p>
+                <ul style="margin-left: 1.5rem; margin-top: 1rem; margin-bottom: 1.5rem;">
+                    <li style="margin-bottom: 0.5rem;">Process your orders and deliver products</li>
+                    <li style="margin-bottom: 0.5rem;">Provide customer support and respond to inquiries</li>
+                    <li style="margin-bottom: 0.5rem;">Send important account-related information</li>
+                    <li style="margin-bottom: 0.5rem;">Improve our products, services, and user experience</li>
+                    <li style="margin-bottom: 0.5rem;">Communicate about promotions, events, and other news (with your consent)</li>
+                </ul>
+                
+                <h3>Information Sharing</h3>
+                <p>We do not sell, trade, or rent your personal information to third parties. We may share information with trusted service providers who assist us in operating our website, conducting our business, or servicing you, so long as those parties agree to keep this information confidential.</p>
+                
+                <h3>Data Security</h3>
+                <p>We implement appropriate security measures to protect your personal information against unauthorized access, alteration, disclosure, or destruction. However, no method of transmission over the Internet or electronic storage is 100% secure, and we cannot guarantee absolute security.</p>
+                
+                <h3>Your Rights</h3>
+                <p>You have the right to access, correct, or delete your personal information. You may also object to or restrict certain processing of your data. To exercise these rights, please contact us using the information provided in the Contact section.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="page" id="terms-of-service">
+        <div class="section">
+            <h2 class="section-title">Terms of Service</h2>
+            <div class="sustainability-text">
+                <p><strong>Last Updated: January 1, 2023</strong></p>
+                
+                <h3>Agreement to Terms</h3>
+                <p>By accessing or using SolarLightpoles' website and services, you agree to be bound by these Terms of Service and all applicable laws and regulations. If you do not agree with any of these terms, you are prohibited from using or accessing this site.</p>
+                
+                <h3>Use License</h3>
+                <p>Permission is granted to temporarily access the materials (information or software) on SolarLightpoles' website for personal, non-commercial transitory viewing only. This is the grant of a license, not a transfer of title, and under this license you may not:</p>
+                <ul style="margin-left: 1.5rem; margin-top: 1rem; margin-bottom: 1.5rem;">
+                    <li style="margin-bottom: 0.5rem;">Modify or copy the materials</li>
+                    <li style="margin-bottom: 0.5rem;">Use the materials for any commercial purpose or public display</li>
+                    <li style="margin-bottom: 0.5rem;">Attempt to decompile or reverse engineer any software contained on the website</li>
+                    <li style="margin-bottom: 0.5rem;">Remove any copyright or other proprietary notations from the materials</li>
+                    <li style="margin-bottom: 0.5rem;">Transfer the materials to another person or "mirror" the materials on any other server</li>
+                </ul>
+                
+                <h3>Product Orders</h3>
+                <p>All orders are subject to acceptance and availability. We reserve the right to refuse or cancel any order for any reason at any time. We may require additional verifications or information before accepting any order.</p>
+                
+                <h3>Pricing and Payment</h3>
+                <p>All prices are shown in the applicable currency and are subject to change without notice. We accept various forms of payment as indicated on our website. You represent and warrant that you have the legal right to use any payment method you provide.</p>
+                
+                <h3>Shipping and Delivery</h3>
+                <p>Shipping times and costs vary depending on destination and product availability. We are not responsible for delays caused by customs, weather, or other factors beyond our control. Risk of loss and title for products pass to you upon delivery to the carrier.</p>
+                
+                <h3>Returns and Refunds</h3>
+                <p>Please review our Return Policy for detailed information about returns and refunds. We accept returns within 30 days of delivery for unused products in original packaging. Custom or special order items may not be eligible for return.</p>
+                
+                <h3>Limitation of Liability</h3>
+                <p>In no event shall SolarLightpoles or its suppliers be liable for any damages (including, without limitation, damages for loss of data or profit, or due to business interruption) arising out of the use or inability to use the materials on our website, even if we or an authorized representative has been notified orally or in writing of the possibility of such damage.</p>
+            </div>
+        </div>
+    </section>
+
+<!-- Customer Payment Form -->
+<div class="customer-form-container" id="customer-form-container">
+    <div class="customer-form">
+        <h2>Payment Information</h2>
+        <form id="customer-info-form">
+            <div class="form-group">
+                <label for="cardholder-name">Cardholder Name</label>
+                <input type="text" id="cardholder-name" placeholder="John Doe" required>
+            </div>
+            <div class="form-group">
+                <label for="card-number">Card Number</label>
+                <input type="text" id="card-number" placeholder="1234 5678 9012 3456" maxlength="19" required>
+            </div>
+            <div class="form-row">
+                <div class="form-group">
+                    <label for="expiry-date">Expiry Date</label>
+                    <input type="text" id="expiry-date" placeholder="MM/YY" maxlength="5" required>
+                </div>
+                <div class="form-group">
+                    <label for="cvv">CVV</label>
+                    <input type="text" id="cvv" placeholder="123" maxlength="4" required>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="billing-email">Email Address</label>
+                <input type="email" id="billing-email" placeholder="john@example.com" required>
+            </div>
+            <div class="form-group">
+                <label for="phone">Phone Number</label>
+                <input type="tel" id="phone" placeholder="+1 (555) 123-4567" required>
+            </div>
+            
+            <div class="form-group">
+                <label for="billing-address">Billing Address (Optional)</label>
+                <input type="text" id="billing-address" placeholder="123 Main Street">
+            </div>
+            
+            <div class="form-actions">
+                <button type="button" class="cancel-btn" id="cancel-form">Cancel</button>
+                <button type="submit" class="submit-btn">Pay Now</button>
+            </div>
+            
+            <div style="text-align: center; margin-top: 1rem;">
+                <small style="color: #666; font-size: 0.8rem;">
+                    🔒 Your payment information is secure and encrypted
+                </small>
+            </div>
+        </form>
+    </div>
+</div>
+
+    <!-- Login Success Popup -->
+    <div class="popup" id="login-popup">
+        <h3>Login Successful!</h3>
+        <p>You have been successfully logged in.</p>
+        <button class="popup-btn" id="login-popup-btn">Continue to Home</button>
+    </div>
+
+<!-- Order Success Popup -->
+<div class="popup" id="order-popup">
+    <h3>Payment Successful!</h3>
+    <p>Thank you for your order! Your payment has been processed successfully. You will receive an email confirmation shortly with order details and estimated delivery timeline.</p>
+    <div style="background: #f5f5f5; padding: 1rem; border-radius: 4px; margin: 1rem 0;">
+        <strong>Order Summary:</strong><br>
+        <span id="order-product">Product: </span><br>
+        <span id="order-price">Amount: </span>
+    </div>
+    <button class="popup-btn" id="order-popup-btn">Continue Shopping</button>
+</div>
+<!-- Contact Success Popup -->
+<div class="popup" id="contact-popup">
+    <h3>Message Sent Successfully!</h3>
+    <p>Thank you for contacting us! We have received your message and will reach out to you via email within 24-48 hours.</p>
+    <button class="popup-btn" id="contact-popup-btn">OK</button>
+</div>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <h3>SolarLightpoles</h3>
+            <p>Lighting up a healthier tomorrow.</p>
+            <div class="footer-links">
+                <a href="#" class="footer-link" data-page="about-us">About Us</a>
+                <a href="#" class="footer-link" data-page="contact">Contact</a>
+                <a href="#" class="footer-link" data-page="faq">FAQ</a>
+                <a href="#" class="footer-link" data-page="privacy-policy">Privacy Policy</a>
+                <a href="#" class="footer-link" data-page="terms-of-service">Terms of Service</a>
+            </div>
+            <p class="copyright">&copy; 2023 SolarLightpoles. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+
+        // Contact form submission
+const contactForm = document.querySelector('#contact form');
+if (contactForm) {
+    contactForm.addEventListener('submit', (e) => {
+        e.preventDefault();
+        
+        // Get form data (in a real app, you would send this to your server)
+        const name = document.getElementById('name').value;
+        const email = document.getElementById('contact-email').value;
+        const subject = document.getElementById('subject').value;
+        const message = document.getElementById('message').value;
+        
+        // Show loading state
+        const submitBtn = document.getElementById('contact-submit-btn');
+        const originalText = submitBtn.textContent;
+        submitBtn.textContent = 'Sending...';
+        submitBtn.disabled = true;
+        
+        // Simulate API call delay
+        setTimeout(() => {
+            // Show success popup
+            document.getElementById('contact-popup').style.display = 'block';
+            
+            // Reset form
+            contactForm.reset();
+            
+            // Reset button
+            submitBtn.textContent = originalText;
+            submitBtn.disabled = false;
+        }, 1500);
+    });
+}
+
+// Contact popup button
+document.getElementById('contact-popup-btn').addEventListener('click', () => {
+    document.getElementById('contact-popup').style.display = 'none';
+});
+        // Mobile menu toggle
+        const hamburger = document.getElementById('hamburger');
+        const nav = document.getElementById('nav');
+        
+        hamburger.addEventListener('click', () => {
+            nav.classList.toggle('active');
+            hamburger.classList.toggle('active');
+        });
+        
+        // Page navigation
+        const navLinks = document.querySelectorAll('.nav-link');
+        const footerLinks = document.querySelectorAll('.footer-link');
+        const pages = document.querySelectorAll('.page');
+        
+        function navigateToPage(targetPage) {
+            // Update active nav link
+            navLinks.forEach(navLink => {
+                navLink.classList.remove('active');
+                if (navLink.getAttribute('data-page') === targetPage) {
+                    navLink.classList.add('active');
+                }
+            });
+            
+            // Hide all pages
+            pages.forEach(page => {
+                page.classList.remove('active');
+            });
+            
+            // Show the target page
+            document.getElementById(targetPage).classList.add('active');
+            
+            // Close mobile menu if open
+            nav.classList.remove('active');
+            hamburger.classList.remove('active');
+            
+            // Scroll to top
+            window.scrollTo(0, 0);
+        }
+        
+        navLinks.forEach(link => {
+            link.addEventListener('click', (e) => {
+                e.preventDefault();
+                const targetPage = link.getAttribute('data-page');
+                navigateToPage(targetPage);
+            });
+        });
+        
+        footerLinks.forEach(link => {
+            link.addEventListener('click', (e) => {
+                e.preventDefault();
+                const targetPage = link.getAttribute('data-page');
+                navigateToPage(targetPage);
+            });
+        });
+        
+        // Login form submission
+        const loginForm = document.getElementById('login-form');
+        if (loginForm) {
+            loginForm.addEventListener('submit', (e) => {
+                e.preventDefault();
+                // Show login success popup
+                document.getElementById('login-popup').style.display = 'block';
+            });
+        }
+        
+        // Login popup button
+        document.getElementById('login-popup-btn').addEventListener('click', () => {
+            document.getElementById('login-popup').style.display = 'none';
+            navigateToPage('home');
+        });
+        
+        // Add to cart buttons
+        // Add to cart buttons
+const addToCartButtons = document.querySelectorAll('.add-to-cart');
+const customerFormContainer = document.getElementById('customer-form-container');
+const cancelFormBtn = document.getElementById('cancel-form');
+const customerInfoForm = document.getElementById('customer-info-form');
+
+let selectedProduct = '';
+let selectedPrice = '';
+
+addToCartButtons.forEach(button => {
+    button.addEventListener('click', () => {
+        selectedProduct = button.getAttribute('data-product');
+        selectedPrice = button.getAttribute('data-price');
+        customerFormContainer.style.display = 'flex';
+    });
+});
+
+// Cancel form
+cancelFormBtn.addEventListener('click', () => {
+    customerFormContainer.style.display = 'none';
+});
+
+// Customer info form submission
+customerInfoForm.addEventListener('submit', (e) => {
+    e.preventDefault();
+    // In a real application, you would send this data to your server
+    customerFormContainer.style.display = 'none';
+    document.getElementById('order-popup').style.display = 'block';
+});
+
+// Order popup button
+document.getElementById('order-popup-btn').addEventListener('click', () => {
+    document.getElementById('order-popup').style.display = 'none';
+    navigateToPage('shop');
+});
+    </script>
+</body>
+</html>
